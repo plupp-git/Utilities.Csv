@@ -110,6 +110,18 @@ row6,Value";
 			ParseAndValidateRow(csv, expectedRows: 1, rowToCompare: 0, expectedRowValues: expectedValues);
 		}
 
+        [TestMethod, TestCategory("Parser")]
+	    public void TestTabSeparated()
+        {
+            string[][] parsedResult = CsvParser.Parse("row1value1\trow1value2\r\n\row2value1\trow2value2", new CsvSettings() { FieldDelimiter = '\t' });
+
+            Assert.AreEqual(2, parsedResult.Length);
+            Assert.AreEqual(2, parsedResult[0].Length);
+            Assert.AreEqual(2, parsedResult[1].Length);
+            Assert.AreEqual("row2value2", parsedResult[1][1]);
+        }
+
+
 		private static void ParseAndValidateRow(string csv, int expectedRows, int? rowToCompare = null, List<String> expectedRowValues = null)
 		{
 			if (rowToCompare != null && rowToCompare >= expectedRows) { throw new ArgumentException("rowToComapare", "Cannot expect rowValues for row after expected row count"); }

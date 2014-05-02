@@ -32,8 +32,8 @@ namespace Nortal.Utilities.Csv
 			this.RowDelimiter = Environment.NewLine;
 		}
 
-		public char FieldDelimiter { get; private set; }
-		public String RowDelimiter { get; private set; }
-		public char QuotingCharacter { get; private set; }
+		public char FieldDelimiter { get; set; }
+		public String RowDelimiter { get; set; }
+		public char QuotingCharacter { get; set; }
 	}
 }
